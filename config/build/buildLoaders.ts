@@ -3,7 +3,22 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {BuildOptions} from "./types/config";
 
 export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
-
+    const refresh = {
+        // for TypeScript, change the following to "\.[jt]sx?"
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: [
+            // ... other loaders
+            {
+                loader: require.resolve('babel-loader'),
+                options: {
+                    // ... other options
+                    // DO NOT apply the plugin in production mode!
+                    plugins: [require.resolve('react-refresh/babel')],
+                },
+            },
+        ],
+    }
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
@@ -46,6 +61,7 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
         typescriptLoader,
         sccLoader,
         svgLoader,
-        fileLoader
+        fileLoader,
+        refresh
     ]
 }
