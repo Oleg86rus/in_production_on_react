@@ -3,6 +3,25 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {BuildOptions} from "./types/config";
 
 export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: "babel-loader",
+            options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    ["i18next-extract",
+                        {
+                            locales: ['ru', 'en'],
+                            keyAsDefaultValue: true
+                        }
+                    ]
+                ]
+            }
+        }
+    }
+
     const refresh = {
         // for TypeScript, change the following to "\.[jt]sx?"
         test: /\.jsx?$/,
@@ -58,10 +77,11 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
         exclude: /node_modules/,
     }
     return [
-        typescriptLoader,
         sccLoader,
         svgLoader,
         fileLoader,
-        refresh
+        refresh,
+        babelLoader,
+        typescriptLoader
     ]
 }
