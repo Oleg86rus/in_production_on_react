@@ -9,6 +9,9 @@ export default {
     coveragePathIgnorePatterns: [
         '/node_modules/',
     ],
+    modulePaths: [
+        '<rootDir>src',
+    ],
     moduleDirectories: [
         'node_modules',
     ],
@@ -25,6 +28,10 @@ export default {
         //      Есть разница между MAC OS и WIN
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
+    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+    moduleNameMapper: {
+        '\\.(s?css)$': 'identity-obj-proxy',
+    },
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 
