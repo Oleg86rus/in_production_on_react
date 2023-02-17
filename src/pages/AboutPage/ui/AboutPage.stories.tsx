@@ -3,20 +3,21 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import 'app/styles/index.scss';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { Loader } from './Loader';
+import AboutPage from './AboutPage';
 
 export default {
-    title: 'shared/Loader',
-    component: Loader,
+    title: 'pages/AboutPage',
+    component: AboutPage,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof Loader>;
+} as ComponentMeta<typeof AboutPage>;
 
-const Template: ComponentStory<typeof Loader> = (args) => <Loader {...args} />;
+// @ts-ignore
+const Template: ComponentStory<typeof AboutPage> = (args) => <AboutPage {...args} />;
 
-export const Light = Template.bind({});
-Light.args = {};
+export const Normal = Template.bind({});
+Normal.args = {};
 
 export const Dark = Template.bind({});
 Dark.args = {};
