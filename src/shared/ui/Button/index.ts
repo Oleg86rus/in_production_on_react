@@ -1,3 +1,1 @@
-import { Button } from 'shared/ui/Button/ui/Button';
-
-export { Button };
+export { Button, ThemeButton } from 'shared/ui/Button/ui/Button';
