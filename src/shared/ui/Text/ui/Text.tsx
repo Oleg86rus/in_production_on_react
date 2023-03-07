@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/tests/classNames/classNames';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 import cls from './Text.module.scss';
 
 export enum TextTheme {
@@ -14,7 +15,7 @@ interface TextProps {
     theme?: TextTheme
 }
 
-export const Text = (props: TextProps) => {
+export const Text = memo((props: TextProps) => {
     const { t } = useTranslation();
     const {
         className, text, title, theme = TextTheme.PRIMARY,
@@ -26,4 +27,4 @@ export const Text = (props: TextProps) => {
             <div className={cls.text}>{text}</div>
         </div>
     );
-};
+});

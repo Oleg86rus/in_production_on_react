@@ -12,5 +12,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "Олег",
+    "lastname": "Потоцкий",
+    "age": "31",
+    "currency": "Rub",
+    "country": "Russia",
+    "city": "Surgut",
+    "username": "admin",
+    "avatar": "Avatar",
+  }
 }
