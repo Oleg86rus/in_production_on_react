@@ -3,12 +3,12 @@ import { useDispatch, useStore } from 'react-redux';
 import { ReduxStoreWithManager, StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
 import { Reducer } from '@reduxjs/toolkit';
 
-export type ReducerList = {
+export type ReducersList = {
     [name in StateSchemaKey]?: Reducer
 }
 
 interface DynamicModuleLoaderProps {
-    reducers: ReducerList,
+    reducers: ReducersList,
     removeAfterUnmount?: boolean
 }
 
@@ -29,7 +29,7 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
 
         return () => {
             if (removeAfterUnmount) {
-                Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry) => {
+                Object.entries(reducers).forEach(([name]: ReducerListEntry) => {
                     store.reducerManager.remove(name);
                     dispatch({ type: `@DESTROY ${name} reducer` });
                 });

@@ -57,6 +57,12 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
+        // eslint-disable-next-line no-dupe-keys
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': [
+            'error',
+            { argsIgnorePattern: '^_' },
+        ],
     },
     globals: {
         __IS_DEV__: true,
