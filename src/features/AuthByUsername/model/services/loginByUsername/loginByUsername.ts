@@ -1,15 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
+import { ThunkConfig } from 'app/providers/StoreProvider';
 
 interface LoginByUsernameProps {
     username: string;
     password: string;
 }
 
-export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, { rejectValue: string }>(
+export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
     'login/loginByUsername',
-    async (authData, { dispatch, extra, rejectWithValue }) => {
+    async (authData, thunkAPI) => {
+        const { extra, dispatch, rejectWithValue } = thunkAPI;
         try {
             // @ts-ignore
             const response = await extra.api.post<User>('http://localhost:8000/login', authData);
