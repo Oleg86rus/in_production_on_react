@@ -62,6 +62,7 @@ export const Input = memo((props: InputProps) => {
                     onFocus={onFocus}
                     onBlur={onBlur}
                     onSelect={onSelect}
+                    // @ts-ignore
                     ref={ref}
                     {...otherProps}
                 />
