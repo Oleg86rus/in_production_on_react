@@ -1,9 +1,17 @@
 {
   "posts": [
-    { "id": "1", "title": "json-server", "author": "typicode" }
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    }
   ],
   "comments": [
-    { "id": "1", "body": "some comment", "postId": 1 }
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
   ],
   "users": [
     {
@@ -20,6 +28,6 @@
     "country": "Russia",
     "city": "Surgut",
     "username": "admin",
-    "avatar": "Avatar"
+    "avatar": "https://avatars.mds.yandex.net/i?id=dc5a2763e811a8a0a7c1be76072b12709de45cca-9265621-images-thumbs&n=13"
   }
 }
