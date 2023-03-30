@@ -31,6 +31,7 @@ export function buildPlugins({
             openAnalyzer: false,
         }));
         plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(new ReactRefreshWebpackPlugin());
     }
 
     return plugins;
