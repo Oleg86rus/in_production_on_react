@@ -1,12 +1,12 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
-import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
 import { $api } from 'shared/api/api';
-import { To } from '@remix-run/router';
-import { NavigateOptions } from 'react-router/dist/lib/context';
+import { NavigateOptions } from 'react-router';
 import { CombinedState, Reducer } from 'redux';
+import { To } from '@remix-run/router';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
+import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -43,4 +43,4 @@ export function createReduxStore(
     return store;
 }
 
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
