@@ -20,7 +20,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         setCollapsed((prev) => !prev);
     };
 
-    const itemlist = useMemo(() => sidebarItemsList.map((item) => (
+    const itemsList = useMemo(() => sidebarItemsList.map((item) => (
         <SidebarItem
             key={item.path}
             item={item}
@@ -45,7 +45,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 {collapsed ? '>' : '<'}
             </Button>
             <div className={cls.items}>
-                {itemlist}
+                {itemsList}
 
             </div>
             <div className={cls.switchers}>

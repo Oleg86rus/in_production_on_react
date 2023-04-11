@@ -31,7 +31,12 @@ interface TextProps {
 
 export const Text = memo((props: TextProps) => {
     const {
-        className, text, title, theme = TextTheme.PRIMARY, align = TextAlign.LEFT, size = TextSize.M,
+        className,
+        text,
+        title,
+        theme = TextTheme.PRIMARY,
+        align = TextAlign.LEFT,
+        size = TextSize.M,
     } = props;
 
     const mods: Mods = {
@@ -42,8 +47,8 @@ export const Text = memo((props: TextProps) => {
 
     return (
         <div className={classNames(cls.Text, mods, [className])}>
-            <p className={cls.title}>{title}</p>
-            <div className={cls.text}>{text}</div>
+            {title && <p className={cls.title}>{title}</p>}
+            {text && <p className={cls.text}>{text}</p>}
         </div>
     );
 });

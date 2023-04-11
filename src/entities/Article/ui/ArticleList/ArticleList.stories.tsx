@@ -1,19 +1,18 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import 'app/styles/index.scss';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
-import { ArticleDetails } from './ArticleDetails';
+import {
+    Article, ArticleBlockType, ArticleType, ArticleView,
+} from '../../model/types/article';
+import { ArticleList } from './ArticleList';
 
 export default {
-    title: 'entities/ArticleDetails',
-    component: ArticleDetails,
+    title: 'entities/ArticleList',
+    component: ArticleList,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ArticleDetails>;
-
-const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
+} as ComponentMeta<typeof ArticleList>;
 
 const article: Article = {
     id: '1',
@@ -90,26 +89,28 @@ const article: Article = {
     ],
 };
 
-export const Normal = Template.bind({});
-Normal.args = {};
-Normal.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-})];
+const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
 
-export const Loading = Template.bind({});
-Loading.args = {};
-Loading.decorators = [StoreDecorator({
-    articleDetails: {
-        isLoading: true,
-    },
-})];
+export const isLoadingBig = Template.bind({});
+isLoadingBig.args = {
+    isLoading: true,
+    articles: new Array(16).fill(0).map((item, i) => (
+        {
+            ...article,
+            id: String(i),
+        }
+    )),
+    view: ArticleView.BIG,
+};
 
-export const Error = Template.bind({});
-Error.args = {};
-Error.decorators = [StoreDecorator({
-    articleDetails: {
-        error: 'error',
-    },
-})];
+export const isLoadingSmall = Template.bind({});
+isLoadingSmall.args = {
+    isLoading: true,
+    articles: new Array(16).fill(0).map((item, i) => (
+        {
+            ...article,
+            id: String(i),
+        }
+    )),
+    view: ArticleView.SMALL,
+};

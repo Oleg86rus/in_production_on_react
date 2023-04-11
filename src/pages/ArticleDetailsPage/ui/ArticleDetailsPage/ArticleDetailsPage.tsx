@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/tests/classNames/classNames';
 import { memo, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from 'entities/Article';
 import { Text } from 'shared/ui/Text';
@@ -9,12 +9,10 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { useDispatch, useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { AddCommentForm } from 'features/addCommentForm';
-import {
-    fetchCommentsByArticlesId,
-} from '../../model/services/fetchCommentsByArticlesId/fetchCommentsByArticlesId';
-import {
-    addCommentForArticle,
-} from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { Button, ThemeButton } from 'shared/ui/Button';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { fetchCommentsByArticlesId } from '../../model/services/fetchCommentsByArticlesId/fetchCommentsByArticlesId';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
 import cls from './ArticleDetailsPage.module.scss';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
@@ -32,10 +30,14 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     };
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-
+    const navigate = useNavigate();
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));
     }, [dispatch]);
+
+    const onBackToList = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticlesId(id));
@@ -46,6 +48,9 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 {!id ? (t('Статья не найдена!')) : (
                     <>
+                        <Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
+                            {t('Назад к списку')}
+                        </Button>
                         <ArticleDetails id={id} />
                         <Text className={cls.commentTitle} title={t('Комментарии')} />
                         <AddCommentForm onSendComment={onSendComment} />

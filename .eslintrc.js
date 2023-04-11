@@ -64,6 +64,7 @@ module.exports = {
             { argsIgnorePattern: '^_' },
         ],
         'no-undef': 'off',
+        'react/no-array-index-key': 'off',
     },
     globals: {
         __IS_DEV__: true,
