@@ -25,13 +25,12 @@ interface ArticleListItemProps {
 export const ArticleListItem = (props: ArticleListItemProps) => {
     const { className, article, view } = props;
     const { t } = useTranslation();
-    const [isHover, bindHover] = useHover();
+    const [bindHover] = useHover();
     const navigate = useNavigate();
     const onOpenArticle = useCallback(() => {
         navigate(RoutePath.article_details + article.id);
     }, [article.id, navigate]);
 
-    console.log(isHover);
     const types = <Text text={article.type.join(', ')} className={cls.types} />;
     const views = (
         <>
