@@ -29,10 +29,9 @@ export const CommentList = (props: CommentListProps) => {
     return (
         <div className={classNames(cls.CommentList, {}, [className])}>
             {comments?.length
-                ? comments.map((com, i) => (
+                ? comments.map((com) => (
                     <CommentCard
-                        // eslint-disable-next-line react/no-array-index-key
-                        key={i}
+                        key={com.id}
                         isLoading={isLoading}
                         className={cls.comment}
                         comment={com}
