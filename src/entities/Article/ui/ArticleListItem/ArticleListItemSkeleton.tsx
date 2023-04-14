@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/tests/classNames/classNames';
-import { Card } from 'shared/ui/Card/ui/Card';
-import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton';
+import { Card } from 'shared/ui/Card';
+import { Skeleton } from 'shared/ui/Skeleton';
 import {
     ArticleView,
 } from '../../model/types/article';
