@@ -1,33 +1,34 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/tests/classNames/classNames';
+import { memo, useCallback } from 'react';
 import {
-    ArticleSortField, ArticleView, ArticleViewSelector, ArticleType,
+    ArticleSortField, ArticleView, ArticleViewSelector,
 } from 'entities/Article';
-import { useCallback } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Card } from 'shared/ui/Card';
 import { Input } from 'shared/ui/Input';
-import { ArticleSortSelector } from 'features/ArticleSortSelector';
 import { SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
+import { ArticleType } from 'entities/Article/model/types/article';
+import { ArticleSortSelector } from 'features/ArticleSortSelector';
+import { classNames } from 'shared/lib/tests/classNames/classNames';
 import { ArticleTypeTabs } from 'features/ArticleTypeTabs';
+import { articlesPageActions } from '../../model/slices/articlePageSlice';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
-import { articlePageActions } from '../../model/slices/articlePageSlice';
+import cls from './ArticlesPageFilter.module.scss';
 import {
     getArticlesPageOrder, getArticlesPageSearch,
     getArticlesPageSort, getArticlesPageType,
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
-import cls from './ArticlePageFilter.module.scss';
 
-interface ArticlePageFilterProps {
-    className?: string
+interface ArticlesPageFiltersProps {
+    className?: string;
 }
 
-export const ArticlePageFilter = (props: ArticlePageFilterProps) => {
-    const { t } = useTranslation();
+export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
     const { className } = props;
+    const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const view = useSelector(getArticlesPageView);
     const sort = useSelector(getArticlesPageSort);
@@ -39,39 +40,39 @@ export const ArticlePageFilter = (props: ArticlePageFilterProps) => {
         dispatch(fetchArticlesList({ replace: true }));
     }, [dispatch]);
 
-    const debounceFetchData = useDebounce(fetchData, 500);
+    const debouncedFetchData = useDebounce(fetchData, 500);
 
     const onChangeView = useCallback((view: ArticleView) => {
-        dispatch(articlePageActions.setView(view));
+        dispatch(articlesPageActions.setView(view));
     }, [dispatch]);
 
     const onChangeSort = useCallback((newSort: ArticleSortField) => {
-        dispatch(articlePageActions.setSort(newSort));
-        dispatch(articlePageActions.setPage(1));
+        dispatch(articlesPageActions.setSort(newSort));
+        dispatch(articlesPageActions.setPage(1));
         fetchData();
     }, [dispatch, fetchData]);
 
     const onChangeOrder = useCallback((newOrder: SortOrder) => {
-        dispatch(articlePageActions.setOrder(newOrder));
-        dispatch(articlePageActions.setPage(1));
+        dispatch(articlesPageActions.setOrder(newOrder));
+        dispatch(articlesPageActions.setPage(1));
         fetchData();
     }, [dispatch, fetchData]);
 
     const onChangeSearch = useCallback((search: string) => {
-        dispatch(articlePageActions.setSearch(search));
-        dispatch(articlePageActions.setPage(1));
-        debounceFetchData();
-    }, [debounceFetchData, dispatch]);
+        dispatch(articlesPageActions.setSearch(search));
+        dispatch(articlesPageActions.setPage(1));
+        debouncedFetchData();
+    }, [dispatch, debouncedFetchData]);
 
     const onChangeType = useCallback((value: ArticleType) => {
-        dispatch(articlePageActions.setType(value));
-        dispatch(articlePageActions.setPage(1));
+        dispatch(articlesPageActions.setType(value));
+        dispatch(articlesPageActions.setPage(1));
         fetchData();
-    }, [fetchData, dispatch]);
+    }, [dispatch, fetchData]);
 
     return (
-        <div className={classNames(cls.ArticlePageFilter, {}, [className])}>
-            <div className={cls.softWrapper}>
+        <div className={classNames(cls.ArticlesPageFilters, {}, [className])}>
+            <div className={cls.sortWrapper}>
                 <ArticleSortSelector
                     order={order}
                     sort={sort}
@@ -85,16 +86,16 @@ export const ArticlePageFilter = (props: ArticlePageFilterProps) => {
             </div>
             <Card className={cls.search}>
                 <Input
-                    value={search}
                     onChange={onChangeSearch}
+                    value={search}
                     placeholder={t('Поиск')}
                 />
             </Card>
             <ArticleTypeTabs
-                className={cls.tabs}
                 value={type}
                 onChangeType={onChangeType}
+                className={cls.tabs}
             />
         </div>
     );
-};
+});
