@@ -6,11 +6,12 @@ export interface UseInfiniteScrollOptions {
     wrapperRef: MutableRefObject<HTMLElement>;
 }
 
-export function useInfiniteScroll(props: UseInfiniteScrollOptions) {
-    const { callback, triggerRef, wrapperRef } = props;
+export function useInfiniteScroll({ callback, wrapperRef, triggerRef }: UseInfiniteScrollOptions) {
     const observer = useRef<IntersectionObserver | null>(null);
+
     useEffect(() => {
         const triggerElement = triggerRef.current;
+
         if (callback) {
             const options = {
                 root: null,
@@ -26,6 +27,7 @@ export function useInfiniteScroll(props: UseInfiniteScrollOptions) {
 
             observer.current.observe(triggerElement);
         }
+
         return () => {
             if (observer.current && triggerElement) {
                 // eslint-disable-next-line react-hooks/exhaustive-deps

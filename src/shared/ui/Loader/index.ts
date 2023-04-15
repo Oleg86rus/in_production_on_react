@@ -1,3 +1,1 @@
-import { Loader } from 'shared/ui/Loader/ui/Loader';
-
-export { Loader };
+export { Loader } from './ui/Loader';

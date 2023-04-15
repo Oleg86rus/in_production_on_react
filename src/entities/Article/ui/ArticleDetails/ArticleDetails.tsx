@@ -10,13 +10,12 @@ import {
     getArticleDetailsError,
     getArticleDetailsIsLoading,
 } from 'entities/Article/model/selectors/articleDetails';
-import { Text } from 'shared/ui/Text';
-import { TextAlign, TextSize } from 'shared/ui/Text/ui/Text';
-import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Text, TextAlign, TextSize } from 'shared/ui/Text';
+import { Skeleton } from 'shared/ui/Skeleton';
+import { Avatar } from 'shared/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg';
-import { Icon } from 'shared/ui/Icon/ui/Icon';
+import { Icon } from 'shared/ui/Icon';
 import { ArticleCodeBlockComponent } from 'entities/Article/ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleTextBlockComponent } from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleImageBlockComponent } from 'entities/Article/ui/ArticleImageBlockComponent/ArticleImageBlockComponent';

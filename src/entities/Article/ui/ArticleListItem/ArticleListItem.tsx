@@ -1,10 +1,10 @@
 import { classNames } from 'shared/lib/tests/classNames/classNames';
 import { Text } from 'shared/ui/Text';
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
-import { Icon } from 'shared/ui/Icon/ui/Icon';
-import { Card } from 'shared/ui/Card/ui/Card';
+import { Icon } from 'shared/ui/Icon';
+import { Card } from 'shared/ui/Card';
 import { useHover } from 'shared/lib/hooks/useHover/useHover';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Avatar } from 'shared/ui/Avatar';
 import { Button, ThemeButton } from 'shared/ui/Button';
 import { useTranslation } from 'react-i18next';
 import { useCallback } from 'react';
