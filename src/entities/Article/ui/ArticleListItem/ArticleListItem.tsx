@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink';
 import { HTMLAttributeAnchorTarget } from 'react';
+import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from 'shared/const/localstorage';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import {
     Article, ArticleBlockType, ArticleTextBlock, ArticleView,
@@ -20,11 +21,12 @@ interface ArticleListItemProps {
     article: Article;
     view: ArticleView;
     target?: HTMLAttributeAnchorTarget;
+    index: number;
 }
 
 export const ArticleListItem = (props: ArticleListItemProps) => {
     const {
-        className, article, view, target,
+        className, article, view, target, index,
     } = props;
     const { t } = useTranslation();
 
@@ -35,6 +37,10 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
             <Icon Svg={EyeIcon} />
         </>
     );
+
+    const handleButtonClick = () => {
+        sessionStorage.setItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX, JSON.stringify(index));
+    };
 
     if (view === ArticleView.BIG) {
         const textBlock = article.blocks.find(
@@ -60,7 +66,11 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
                             target={target}
                             to={RoutePath.article_details + article.id}
                         >
-                            <Button theme={ThemeButton.OUTLINE}>
+                            <Button
+                                theme={ThemeButton.OUTLINE}
+                                onClick={handleButtonClick}
+                            >
+
                                 {t('Читать далее')}
                             </Button>
                         </AppLink>
@@ -74,6 +84,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
     return (
         <AppLink
             target={target}
+            onClick={handleButtonClick}
             to={RoutePath.article_details + article.id}
             className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
         >

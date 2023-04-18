@@ -88,4 +88,11 @@
     .title {
         margin-top: 8px;
     }
+
+    .title p {
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

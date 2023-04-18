@@ -9,7 +9,7 @@ import { Page } from 'widgets/Page';
 import { Text } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
-import { ArticlesPageFilters } from '../ArticlePageFilter/ArticlesPageFilter';
+import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlePageFilter/ArticlesPageFilter';
 import { fetchNextArticlePage } from '../../model/services/fetchNextArticlePage/fetchNextArticlePage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import {
@@ -61,18 +61,14 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <Page
-                onScrollEnd={onLoadNextPart}
-                className={classNames(cls.ArticlesPage, {}, [className])}
-            >
-                <ArticlesPageFilters />
-                <ArticleList
-                    isLoading={isLoading}
-                    articles={articles}
-                    view={view}
-                    className={cls.list}
-                />
-            </Page>
+            <ArticlesPageFilters />
+            <ArticleList
+                isLoading={isLoading}
+                articles={articles}
+                view={view}
+                className={cls.list}
+                onLoadNextPart={onLoadNextPart}
+            />
         </DynamicModuleLoader>
     );
 };

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { AddCommentForm } from 'features/addCommentForm';
 import { Page } from 'widgets/Page';
+import { fetchNextArticlePage } from 'pages/ArticlesPage/model/services/fetchNextArticlePage/fetchNextArticlePage';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { articleDetailsPageReducer } from '../../model/slices';
 import {
@@ -46,6 +47,10 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
         dispatch(addCommentForArticle(text));
     }, [dispatch]);
 
+    const onLoadNextPart = useCallback(() => {
+        dispatch(fetchNextArticlePage());
+    }, [dispatch]);
+
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticlesId(id));
         dispatch(fetchArticleRecommendations());
@@ -68,6 +73,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
                             isLoading={recommendationsLoading}
                             className={cls.recommendations}
                             target="_blank"
+                            onLoadNextPart={onLoadNextPart}
                         />
                         <Text
                             size={TextSize.L}
