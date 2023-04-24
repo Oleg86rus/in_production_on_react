@@ -9,6 +9,9 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [
+        (Story) => <div style={{ padding: 100 }}><Story /></div>,
+    ],
 } as ComponentMeta<typeof ListBox>;
 
 const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
@@ -24,5 +27,60 @@ Normal.args = {
         { value: '3', content: 'test3' },
     ],
     readonly: false,
-    direction: 'bottom',
+};
+
+export const topLeft = Template.bind({});
+topLeft.args = {
+    value: undefined,
+    defaultValue: 'Укажите страну',
+    onChange: () => {},
+    items: [
+        { value: '1', content: 'test1' },
+        { value: '2', content: 'test2' },
+        { value: '3', content: 'test3' },
+    ],
+    readonly: false,
+    direction: 'top left',
+};
+
+export const topRight = Template.bind({});
+topRight.args = {
+    value: undefined,
+    defaultValue: 'Укажите страну',
+    onChange: () => {},
+    items: [
+        { value: '1', content: 'test1' },
+        { value: '2', content: 'test2' },
+        { value: '3', content: 'test3' },
+    ],
+    readonly: false,
+    direction: 'top right',
+};
+
+export const bottomLeft = Template.bind({});
+bottomLeft.args = {
+    value: undefined,
+    defaultValue: 'Укажите страну',
+    onChange: () => {},
+    items: [
+        { value: '1', content: 'test1' },
+        { value: '2', content: 'test2' },
+        { value: '3', content: 'test3' },
+    ],
+    readonly: false,
+    direction: 'bottom left',
+};
+
+export const bottomRight = Template.bind({});
+bottomRight.args = {
+    value: undefined,
+    defaultValue: 'Укажите страну',
+    onChange: () => {},
+    items: [
+        { value: '1', content: 'test1' },
+        { value: '2', content: 'test2' },
+        { value: '3', content: 'test3' },
+    ],
+    readonly: false,
+    direction: 'bottom right',
 };

@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { classNames, Mods } from 'shared/lib/tests/classNames/classNames';
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import cls from './Flex.module.scss';
@@ -46,7 +45,6 @@ export interface FlexProps extends DivProps{
 }
 
 export const Flex = (props: FlexProps) => {
-    const { t } = useTranslation();
     const {
         className,
         children,
