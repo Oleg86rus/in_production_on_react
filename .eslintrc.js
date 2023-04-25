@@ -77,6 +77,7 @@ module.exports = {
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
         'prod/path-checker': 'error',
+        'no-mixed-spaces-and-tabs': 'off',
     },
     globals: {
         __IS_DEV__: true,
