@@ -28,10 +28,10 @@ export const CommentList = (props: CommentListProps) => {
     return (
         <VStack gap="16" max className={classNames('', {}, [className])}>
             {comments?.length
-                ? comments.map((com) => (
+                ? comments?.map((com) => (
                     <CommentCard
-                        key={com.id}
                         isLoading={isLoading}
+                        key={String(com)}
                         comment={com}
                     />
                 ))
