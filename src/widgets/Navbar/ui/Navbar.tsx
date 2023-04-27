@@ -39,6 +39,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     }, [dispatch]);
 
     const isAdminPanelAvailable = isAdmin || isManager;
+    const title = t('Твой любимый блог!');
 
     if (authData) {
         return (
@@ -46,7 +47,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 <Text
                     theme={TextTheme.INVERTED}
                     className={cls.appName}
-                    title={t('Твой любимый блог!')}
+                    title={title}
                 />
                 <AppLink
                     className={cls.createBtn}

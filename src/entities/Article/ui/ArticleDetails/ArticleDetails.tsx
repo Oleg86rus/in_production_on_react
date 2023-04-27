@@ -27,7 +27,7 @@ import cls from './ArticleDetails.module.scss';
 
 interface ArticleDetailsProps {
     className?: string;
-    id: string
+    id?: string
 }
 
 const reducers: ReducersList = {
@@ -76,6 +76,7 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
     });
 
     let content;
+    const title = t('Произошла ошибка при загрузке статьи');
 
     if (isLoading) {
         content = (
@@ -91,7 +92,7 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
         content = (
             <Text
                 align={TextAlign.CENTER}
-                title={t('Произошла ошибка при загрузке статьи')}
+                title={title}
             />
         );
     } else {

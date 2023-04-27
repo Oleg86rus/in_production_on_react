@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/tests/classNames/classNames';
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from 'entities/Article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from 'widgets/Page';
@@ -21,20 +20,17 @@ const reducers: ReducersList = {
 };
 
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
-    const { t } = useTranslation('article-details');
     const { id } = useParams<{id: string}>();
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                {!id ? (t('Статья не найдена!')) : (
-                    <VStack gap="16" max>
-                        <ArticleDetailsPageHeader />
-                        <ArticleDetails id={id} />
-                        <ArticleRecommendationList />
-                        <ArticleDetailsComments id={id} />
-                    </VStack>
-                )}
+                <VStack gap="16" max>
+                    <ArticleDetailsPageHeader />
+                    <ArticleDetails id={id} />
+                    <ArticleRecommendationList />
+                    <ArticleDetailsComments id={id} />
+                </VStack>
             </Page>
         </DynamicModuleLoader>
     );

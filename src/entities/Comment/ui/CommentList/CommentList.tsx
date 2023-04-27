@@ -25,6 +25,8 @@ export const CommentList = (props: CommentListProps) => {
         );
     }
 
+    const text = t('Комментарии отсутствуют');
+
     return (
         <VStack gap="16" max className={classNames('', {}, [className])}>
             {comments?.length
@@ -35,7 +37,7 @@ export const CommentList = (props: CommentListProps) => {
                         comment={com}
                     />
                 ))
-                : <Text text={t('Комментарии отсутствуют')} />}
+                : <Text text={text} />}
         </VStack>
     );
 };

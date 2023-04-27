@@ -35,9 +35,11 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
         dispatch(updateProfileData());
     }, [dispatch]);
 
+    const title = t('Профиль');
+
     return (
         <HStack max justify="between" className={classNames('', {}, [className])}>
-            <Text title={t('Профиль')} />
+            <Text title={title} />
             {canEdit && (
                 <div>
                     {readonly
