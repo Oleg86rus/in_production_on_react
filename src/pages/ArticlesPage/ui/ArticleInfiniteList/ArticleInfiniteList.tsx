@@ -31,9 +31,11 @@ export const ArticleInfiniteList = memo((props: ArticlesPageProps) => {
         dispatch(initArticlesPage(searchParams));
     });
 
+    const text = t('Ошибка при загрузке статей');
+
     if (error) {
         return (
-            <Text text={t('Ошибка при загрузке статей')} />
+            <Text text={text} />
         );
     }
     return (

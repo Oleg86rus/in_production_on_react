@@ -46,17 +46,20 @@ export const ArticleSortSelector = (props: ArticleSortSelectorProps) => {
         },
     ], [t]);
 
+    const labelForFirstSelect = t('Сортировать по');
+    const labelForSecondSelect = t('по');
+
     return (
         <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
             <Select
                 options={sortFieldOptions}
-                label={t('Сортировать по')}
+                label={labelForFirstSelect}
                 value={sort}
                 onChange={onChangeSort}
             />
             <Select
                 options={orderOptions}
-                label={t('по')}
+                label={labelForSecondSelect}
                 value={order}
                 onChange={onChangeOrder}
                 className={cls.order}

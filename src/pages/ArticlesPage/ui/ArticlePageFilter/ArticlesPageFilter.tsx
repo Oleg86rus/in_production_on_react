@@ -70,6 +70,8 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
         fetchData();
     }, [dispatch, fetchData]);
 
+    const placeholder = t('Поиск');
+
     return (
         <div className={classNames(cls.ArticlesPageFilters, {}, [className])}>
             <div className={cls.sortWrapper}>
@@ -88,7 +90,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
                 <Input
                     onChange={onChangeSearch}
                     value={search}
-                    placeholder={t('Поиск')}
+                    placeholder={placeholder}
                 />
             </Card>
             <ArticleTypeTabs

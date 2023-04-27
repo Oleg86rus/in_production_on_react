@@ -50,14 +50,16 @@ export const ProfileCard = (props: ProfileCardProps) => {
             </HStack>
         );
     }
+    const title = t('Произошла ошибка при загрузке профиля');
+    const text = t('Попробуйте обновить страницу');
 
     if (error) {
         return (
             <HStack justify="center" max className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
                 <Text
                     theme={TextTheme.ERROR}
-                    title={t('Произошла ошибка при загрузке профиля')}
-                    text={t('Попробуйте обновить страницу')}
+                    title={title}
+                    text={text}
                     align={TextAlign.CENTER}
                 />
             </HStack>
@@ -66,6 +68,15 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
     const mods: Mods = {
         [cls.editing]: !readonly,
+    };
+
+    const placeholder = {
+        first: t('Ваше имя'),
+        lastname: t('Ваша фамилия'),
+        age: t('Ваш возраст'),
+        city: t('Город'),
+        username: t('Имя пользователя'),
+        avatar: t('Ведите ссылку на аватар'),
     };
 
     return (
@@ -78,7 +89,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
             )}
             <Input
                 value={data?.first}
-                placeholder={t('Ваше имя')}
+                placeholder={placeholder.first}
                 className={cls.input}
                 onChange={onChangeFirstname}
                 readonly={readonly}
@@ -86,7 +97,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
             />
             <Input
                 value={data?.lastname}
-                placeholder={t('Ваша фамилия')}
+                placeholder={placeholder.lastname}
                 className={cls.input}
                 onChange={onChangeLastname}
                 readonly={readonly}
@@ -94,7 +105,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
             />
             <Input
                 value={data?.age}
-                placeholder={t('Ваш возраст')}
+                placeholder={placeholder.age}
                 className={cls.input}
                 onChange={onChangeAge}
                 readonly={readonly}
@@ -102,7 +113,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
             />
             <Input
                 value={data?.city}
-                placeholder={t('Город')}
+                placeholder={placeholder.city}
                 className={cls.input}
                 onChange={onChangeCity}
                 readonly={readonly}
@@ -110,7 +121,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
             />
             <Input
                 value={data?.username}
-                placeholder={t('Имя пользователя')}
+                placeholder={placeholder.username}
                 className={cls.input}
                 onChange={onChangeUsername}
                 readonly={readonly}
@@ -118,7 +129,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
             />
             <Input
                 value={data?.avatar}
-                placeholder={t('Ведите ссылку на аватар')}
+                placeholder={placeholder.avatar}
                 className={cls.input}
                 onChange={onChangeAvatar}
                 readonly={readonly}
