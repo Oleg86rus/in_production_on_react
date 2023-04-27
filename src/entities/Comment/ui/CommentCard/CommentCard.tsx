@@ -18,7 +18,7 @@ export const CommentCard = (props: CommentCardProps) => {
     const { className, comment, isLoading } = props;
     if (isLoading) {
         return (
-            <VStack gap="8" max className={classNames(cls.CommentCard, {}, [className, cls.loading])}>
+            <VStack gap="16" max className={classNames(cls.CommentCard, {}, [className, cls.loading])}>
                 <VStack max gap="16" className={cls.header}>
                     <Skeleton width={30} height={30} border="50%" />
                     <Skeleton width={100} height={15} className={cls.username} />
