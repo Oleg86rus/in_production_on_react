@@ -1,11 +1,11 @@
 export { articleDetailsPageReducer } from './model/slices';
 
-export { ArticlesDetailsPageSchema } from './model/types';
+export type { ArticlesDetailsPageSchema } from './model/types';
 
-export {
+export type {
     ArticleDetailsRecommendationsSchema,
 } from './model/types/ArticleDetailsRecommendationsSchema';
 
-export { ArticleDetailsCommentSchema } from './model/types/ArticleDetailsCommentSchema';
+export type { ArticleDetailsCommentSchema } from './model/types/ArticleDetailsCommentSchema';
 
 export { ArticleDetailsPageAsync as ArticleDetailsPage } from './ui/ArticleDetailsPage/ArticleDetailsPage.async';

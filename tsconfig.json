@@ -27,7 +27,8 @@
 //    import * as React from 'react',
 //    получаем такой,
 //    import React from 'react'
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true
   },
   "ts-node": {
     "compilerOptions": {
