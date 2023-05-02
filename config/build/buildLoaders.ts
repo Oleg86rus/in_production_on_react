@@ -5,7 +5,8 @@ import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const { isDev } = options;
-    const babelLoader = buildBabelLoader(options);
+    const tsxCodeBabelLoader = buildBabelLoader({ ...options, isTsx: true });
+    const codeBabelLoader = buildBabelLoader({ ...options, isTsx: false });
 
     const refresh = {
         // for TypeScript, change the following to "\.[jt]sx?"
@@ -39,17 +40,18 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const cssLoader = buildCssLoader(isDev);
 
     //  Если не используем TS - нужен babel-loader
-    const typescriptLoader = {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-    };
+    // const typescriptLoader = {
+    //     test: /\.tsx?$/,
+    //     use: 'ts-loader',
+    //     exclude: /node_modules/,
+    // };
+
     return [
         cssLoader,
         svgLoader,
         fileLoader,
         refresh,
-        babelLoader,
-        typescriptLoader,
+        tsxCodeBabelLoader,
+        codeBabelLoader,
     ];
 }
