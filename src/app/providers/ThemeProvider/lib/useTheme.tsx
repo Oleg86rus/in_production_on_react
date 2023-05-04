@@ -23,7 +23,6 @@ export function useTheme(): UseThemeResult {
             break;
         default:
             newTheme = Theme.LIGHT;
-            break;
         }
         setTheme?.(newTheme);
         document.body.className = newTheme;
