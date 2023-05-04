@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import 'app/styles/index.scss';
-import { Button } from '../../Button';
+import { Button } from '../../../Button';
 import { Dropdown } from './Dropdown';
 
 export default {
