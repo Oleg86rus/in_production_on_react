@@ -1,10 +1,12 @@
 import { Fragment, ReactNode } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
-import { classNames } from 'shared/lib/tests/classNames/classNames';
 import { DropdownDirection } from 'shared/types/ui';
-import { HStack } from '../../Stack';
-import { Button } from '../../Button';
+import { classNames } from '../../../../lib/tests/classNames/classNames';
+import { HStack } from '../../../Stack';
+import { Button } from '../../../Button';
 import cls from './ListBox.module.scss';
+import { mapDirectionClass } from '../../styles/consts';
+import popupCls from '../../styles/popup.module.scss';
 
 export interface ListBoxItem {
     value: string;
@@ -23,13 +25,6 @@ interface LisBoxProps {
     label?: string;
 }
 
-const mapDirectionClass: Record<DropdownDirection, string> = {
-    'bottom left': cls.optionsBottomLeft,
-    'bottom right': cls.optionsBottomRight,
-    'top left': cls.optionsTopLeft,
-    'top right': cls.optionsTopRight,
-};
-
 export function ListBox(props: LisBoxProps) {
     const {
         items, className, onChange, defaultValue, value, readonly, direction = 'bottom right', label,
@@ -42,7 +37,7 @@ export function ListBox(props: LisBoxProps) {
             {label && <span>{`${label}>`}</span>}
             <HListBox
                 as="div"
-                className={classNames(cls.ListBox, {}, [className])}
+                className={classNames(cls.ListBox, {}, [className, popupCls.popup])}
                 value={value}
                 onChange={onChange}
                 disabled={readonly}
@@ -65,17 +60,15 @@ export function ListBox(props: LisBoxProps) {
                         >
                             {({ active, selected }) => (
                                 <li className={classNames(cls.item, {
-                                    [cls.active]: active,
-                                    [cls.disabled]: item.disabled,
+                                    [popupCls.active]: active,
+                                    [popupCls.disabled]: item.disabled,
                                 })}
                                 >
                                     {selected && '!!!'}
                                     {item.content}
                                 </li>
                             )}
-
                         </HListBox.Option>
-
                     ))}
                 </HListBox.Options>
             </HListBox>
