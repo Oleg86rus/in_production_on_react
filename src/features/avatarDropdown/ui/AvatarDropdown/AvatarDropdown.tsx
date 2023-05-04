@@ -8,7 +8,6 @@ import {
     getUserAuthData, isUserAdmin, isUserManager, userActions,
 } from 'entities/User';
 import { useDispatch, useSelector } from 'react-redux';
-import cls from './AvatarDropdown.module.scss';
 
 interface AvatarDropdownProps {
     className?: string
@@ -32,7 +31,7 @@ export const AvatarDropdown = (props: AvatarDropdownProps) => {
 
     return (
         <Dropdown
-            className={classNames(cls.AvatarDropdown, {}, [className])}
+            className={classNames('', {}, [className])}
             direction="bottom left"
             items={[
                 ...(isAdminPanelAvailable ? [{

@@ -12,7 +12,6 @@ import { VStack } from 'shared/ui/Stack';
 import { ValidateProfileError } from '../../model/consts/consts';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
-import cls from './EditableProfileCard.module.scss';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import {
     getProfileIsLoading,
@@ -88,7 +87,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
             <VStack
                 gap="8"
                 max
-                className={classNames(cls.EditableProfileCard, {}, [className])}
+                className={classNames('', {}, [className])}
             >
                 <EditableProfileCardHeader />
                 {validateErrors?.length && validateErrors.map((err) => (
