@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next';
 import { classNames, Mods } from 'shared/lib/tests/classNames/classNames';
 import { ReactNode } from 'react';
-import { Portal } from 'shared/ui/Portal/Portal';
+import { Portal } from '../Portal/Portal';
+import { Overlay } from '../Overlay/Overlay';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {
@@ -12,7 +12,6 @@ interface DrawerProps {
 }
 
 export const Drawer = (props: DrawerProps) => {
-    const { t } = useTranslation();
     const {
         className, onClose, isOpen, children,
     } = props;
