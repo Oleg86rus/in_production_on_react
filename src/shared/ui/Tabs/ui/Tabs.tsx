@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/tests/classNames/classNames';
+import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { ReactNode, useCallback } from 'react';
 import { Card, CardTheme } from '../../Card';
 import cls from './Tabs.module.scss';

@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/tests/classNames/classNames';
+import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { Popover as HPopover } from '@headlessui/react';
 import { ReactNode } from 'react';
 import { mapDirectionClass } from '../../styles/consts';

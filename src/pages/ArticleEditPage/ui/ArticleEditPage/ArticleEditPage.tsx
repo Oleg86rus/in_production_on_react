@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/tests/classNames/classNames';
-import { Page } from 'widgets/Page';
+import { classNames } from '@/shared/lib/tests/classNames/classNames';
+import { Page } from '@/widgets/Page';
 import { useParams } from 'react-router-dom';
 
 interface ArticleEditPageProps {
