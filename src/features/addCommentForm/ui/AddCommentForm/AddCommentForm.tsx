@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/tests/classNames/classNames';
-import { Input } from 'shared/ui/Input';
-import { Button, ThemeButton } from 'shared/ui/Button';
+import { classNames } from '@/shared/lib/tests/classNames/classNames';
+import { Input } from '@/shared/ui/Input';
+import { Button, ThemeButton } from '@/shared/ui/Button';
 import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { HStack } from 'shared/ui/Stack';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { HStack } from '@/shared/ui/Stack';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';
 import {
     // getAddCommentFormError,

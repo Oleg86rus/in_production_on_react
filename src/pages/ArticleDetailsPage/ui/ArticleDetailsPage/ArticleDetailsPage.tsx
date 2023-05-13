@@ -1,11 +1,11 @@
-import { classNames } from 'shared/lib/tests/classNames/classNames';
+import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
-import { ArticleDetails } from 'entities/Article';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Page } from 'widgets/Page';
-import { VStack } from 'shared/ui/Stack';
-import { ArticleRecommendationList } from 'features/articleRecommendationList';
+import { ArticleDetails } from '@/entities/Article';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Page } from '@/widgets/Page';
+import { VStack } from '@/shared/ui/Stack';
+import { ArticleRecommendationList } from '@/features/articleRecommendationList';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { articleDetailsPageReducer } from '../../model/slices';
