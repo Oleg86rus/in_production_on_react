@@ -1,5 +1,4 @@
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import cls from './StarRating.module.scss';
 import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { Icon } from '@/shared/ui/Icon';
@@ -14,15 +13,14 @@ interface StarRatingProps {
 
 const stars = [1, 2, 3, 4, 5];
 
-export const StarRating = (props: StarRatingProps) => {
-    const { t } = useTranslation();
+export const StarRating = memo((props: StarRatingProps) => {
     const {
         className,
         selectedStars = 0,
         onSelect,
         size = 30,
     } = props;
-    const [currentStarsCount, setCurrentStarCount] = useState(0);
+    const [currentStarsCount, setCurrentStarCount] = useState(selectedStars);
     const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 
     const onHover = (starsCount: number) => () => {
@@ -56,13 +54,13 @@ export const StarRating = (props: StarRatingProps) => {
                     )}
                     Svg={StarIcon}
                     key={starNumber}
-                    onMouseLeave={onLeave}
-                    onMouseEnter={onHover(starNumber)}
                     width={size}
                     height={size}
+                    onMouseLeave={onLeave}
+                    onMouseEnter={onHover(starNumber)}
                     onClick={onClick(starNumber)}
                 />
             ))}
         </div>
     );
-};
+});
