@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import {
     ArticleSortField, ArticleView, ArticleViewSelector,
 } from '@/entities/Article';
-import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
