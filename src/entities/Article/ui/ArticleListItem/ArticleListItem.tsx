@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+import { HTMLAttributeAnchorTarget } from 'react';
 import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
@@ -5,10 +7,8 @@ import { Icon } from '@/shared/ui/Icon';
 import { Card } from '@/shared/ui/Card';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button, ThemeButton } from '@/shared/ui/Button';
-import { useTranslation } from 'react-i18next';
 import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { AppLink } from '@/shared/ui/AppLink';
-import { HTMLAttributeAnchorTarget } from 'react';
 import { ArticleBlockType, ArticleView } from '../../model/consts/articleConsts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import {

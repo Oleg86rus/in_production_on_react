@@ -1,9 +1,9 @@
-import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ThemeButton } from '@/shared/ui/Button';
 import { memo, useCallback, useState } from 'react';
-import { LoginModal } from '@/features/AuthByUsername';
 import { useSelector } from 'react-redux';
+import { classNames } from '@/shared/lib/tests/classNames/classNames';
+import { Button, ThemeButton } from '@/shared/ui/Button';
+import { LoginModal } from '@/features/AuthByUsername';
 import {
     getUserAuthData,
 } from '@/entities/User';

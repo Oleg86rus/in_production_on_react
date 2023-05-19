@@ -1,5 +1,5 @@
-import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { memo, useCallback } from 'react';
+import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Page } from '@/widgets/Page';

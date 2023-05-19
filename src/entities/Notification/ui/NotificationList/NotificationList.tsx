@@ -1,5 +1,5 @@
-import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { memo } from 'react';
+import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { VStack } from '@/shared/ui/Stack';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { useNotifications } from '../../api/notificationApi';

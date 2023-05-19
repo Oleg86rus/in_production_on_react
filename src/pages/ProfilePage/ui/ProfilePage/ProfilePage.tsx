@@ -1,11 +1,11 @@
-import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { memo } from 'react';
+import { useParams } from 'react-router-dom';
+import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { Page } from '@/widgets/Page';
 import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 import {
     EditableProfileCard,
 } from '@/features/editableProfileCard';
-import { useParams } from 'react-router-dom';
 
 interface ProfilePageProps {
     className?: string
