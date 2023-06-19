@@ -79,11 +79,20 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'no-mixed-spaces-and-tabs': 'off',
         'prod/path-checker': ['error', { alias: '@' }],
-        'prod/public-api-imports': ['error',
+        'prod/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
+        'prod/public-api-imports': [
+            'error',
             {
                 alias: '@',
                 testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
-            }],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,
