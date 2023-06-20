@@ -25,9 +25,11 @@ module.exports = {
         'i18next',
         'react-hooks',
         'prod',
+        'unused-imports',
     ],
     rules: {
         indent: [2, 4],
+        'unused-imports/no-unused-imports': 'error',
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
         'react/jsx-filename-extension': [
@@ -69,8 +71,6 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
-        // eslint-disable-next-line no-dupe-keys
-        'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': [
             'error',
             { argsIgnorePattern: '^_' },
@@ -79,11 +79,20 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'no-mixed-spaces-and-tabs': 'off',
         'prod/path-checker': ['error', { alias: '@' }],
-        'prod/public-api-imports': ['error',
+        'prod/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
+        'prod/public-api-imports': [
+            'error',
             {
                 alias: '@',
                 testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
-            }],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,

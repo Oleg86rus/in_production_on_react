@@ -5,13 +5,13 @@ import {
 import {
     ThemeDecorator,
 } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '../../src/app/providers/ThemeProvider';
 import {
     RouterDecorator,
 } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import {
     SuspenseDecorator,
 } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
+import { Theme } from '../../src/shared/const/theme';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -21,6 +21,7 @@ export const parameters = {
             date: /Date$/,
         },
     },
+    layout: 'fullscreen',
 };
 
 addDecorator(RouterDecorator);
