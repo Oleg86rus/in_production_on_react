@@ -5,7 +5,7 @@ import { Text } from '@/shared/ui/Text';
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { getUserAuthData } from '@/entities/User';
-import { HStack } from '@/shared/ui/Stack/HStack/HStack';
+import { HStack } from '@/shared/ui/Stack';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { profileActions } from '../../model/slice/profileSlice';
