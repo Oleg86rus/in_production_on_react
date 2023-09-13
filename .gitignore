@@ -6,4 +6,4 @@
 .loki/report.html
 .loki/report.json
 *.DS_Store
-/reports
+/reports/unit
