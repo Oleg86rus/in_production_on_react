@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
-import { ComponentRender } from '@/shared/lib/tests/componentRender/ComponentRender';
+import { componentRender } from '@/shared/lib/tests/componentRender/ComponentRender';
 import { Profile } from '@/entities/Profile';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
@@ -41,14 +41,14 @@ const options = {
 
 describe('features/EditableProfileCard', () => {
     test('Режим только для чтения меняется на редактируемый', async () => {
-        ComponentRender(<EditableProfileCard id="1" />, options);
+        componentRender(<EditableProfileCard id="1" />, options);
 
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
         expect(screen.getByTestId('EditableProfileCardHeader.CancelButton')).toBeInTheDocument();
     });
 
     test('При нажатии кнопки отмена, значения должны обнулиться', async () => {
-        ComponentRender(<EditableProfileCard id="1" />, options);
+        componentRender(<EditableProfileCard id="1" />, options);
 
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
 
@@ -68,7 +68,7 @@ describe('features/EditableProfileCard', () => {
     });
 
     test('Должна появиться ошибка', async () => {
-        ComponentRender(<EditableProfileCard id="1" />, options);
+        componentRender(<EditableProfileCard id="1" />, options);
 
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
 
@@ -82,7 +82,7 @@ describe('features/EditableProfileCard', () => {
 
     test('Нет ошибок валидации, PUT запрос уйдет на сервер', async () => {
         const mockPutReq = jest.spyOn($api, 'put');
-        ComponentRender(<EditableProfileCard id="1" />, options);
+        componentRender(<EditableProfileCard id="1" />, options);
 
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
 
