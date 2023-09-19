@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { screen } from '@testing-library/react';
-import { componentRender } from '@/shared/lib/tests/componentRender/ComponentRender';
 import { Counter } from './Counter';
+import { componentRender } from '@/shared/lib/tests/componentRender/ComponentRender';
 
 describe('Counter', () => {
     test('test render', () => {

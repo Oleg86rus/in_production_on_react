@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     stories: [
         '../../src/**/*.stories.@(js|jsx|ts|tsx)',
     ],
@@ -7,11 +7,11 @@ module.exports = {
         {
             name: '@storybook/addon-essentials',
             options: {
-                background: false,
+                backgrounds: false,
             },
         },
         '@storybook/addon-interactions',
-        'storybook-addon-mock/register',
+        'storybook-addon-mock',
         'storybook-addon-themes',
     ],
     framework: '@storybook/react',
