@@ -3,12 +3,10 @@ import { useParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { Page } from '@/widgets/Page';
 import { VStack } from '@/shared/ui/Stack';
-import {
-    EditableProfileCard,
-} from '@/features/editableProfileCard';
+import { EditableProfileCard } from '@/features/editableProfileCard';
 
 interface ProfilePageProps {
-    className?: string
+    className?: string;
 }
 
 const ProfilePage = memo(({ className }: ProfilePageProps) => {
@@ -19,7 +17,10 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
             data-testid="ProfilePage"
             className={classNames('', {}, [className])}
         >
-            <VStack gap="16" max>
+            <VStack
+                gap="16"
+                max
+            >
                 <EditableProfileCard id={id} />
             </VStack>
         </Page>

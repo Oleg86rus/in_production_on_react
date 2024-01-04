@@ -8,6 +8,7 @@ module.exports = {
         'plugin:react/recommended',
         'airbnb',
         'plugin:i18next/recommended',
+        'plugin:prettier/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -28,13 +29,12 @@ module.exports = {
         'unused-imports',
     ],
     rules: {
-        indent: [2, 4],
+        'react/jsx-max-props-per-line': ['error', { maximum: 4 }],
         'unused-imports/no-unused-imports': 'error',
-        'react/jsx-indent': [2, 4],
-        'react/jsx-indent-props': [2, 4],
         'react/jsx-filename-extension': [
             2,
-            { extensions: ['.js', '.jsx', 'tsx'] }],
+            { extensions: ['.js', '.jsx', 'tsx'] },
+        ],
         'react/react-in-jsx-scope': 'off',
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
@@ -90,7 +90,11 @@ module.exports = {
             'error',
             {
                 alias: '@',
-                testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
+                testFilesPatterns: [
+                    '**/*.test.*',
+                    '**/*.story.*',
+                    '**/StoreDecorator.tsx',
+                ],
             },
         ],
     },

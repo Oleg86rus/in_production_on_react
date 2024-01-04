@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import './Loader.scss';
 
 interface PageLoaderProps {
-    className?: string
+    className?: string;
 }
 
 export const Loader = ({ className }: PageLoaderProps) => (

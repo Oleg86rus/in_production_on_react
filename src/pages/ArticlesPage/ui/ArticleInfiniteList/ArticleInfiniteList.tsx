@@ -15,7 +15,7 @@ import {
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 
 interface ArticlesPageProps {
-    className?: string
+    className?: string;
 }
 export const ArticleInfiniteList = memo((props: ArticlesPageProps) => {
     const { className } = props;
@@ -34,9 +34,7 @@ export const ArticleInfiniteList = memo((props: ArticlesPageProps) => {
     const text = t('Ошибка при загрузке статей');
 
     if (error) {
-        return (
-            <Text text={text} />
-        );
+        return <Text text={text} />;
     }
     return (
         <ArticleList

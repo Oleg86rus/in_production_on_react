@@ -35,15 +35,18 @@ export const RatingCard = (props: RatingCardProps) => {
     const [starsCount, setStarsCount] = useState(rate);
     const [feedback, setFeedback] = useState('');
 
-    const onSelectStarts = useCallback((selectedStarsCount: number) => {
-        setStarsCount(selectedStarsCount);
-        if (hasFeedback) {
+    const onSelectStarts = useCallback(
+        (selectedStarsCount: number) => {
+            setStarsCount(selectedStarsCount);
+            if (hasFeedback) {
+                setIsModalOpen(true);
+            } else {
+                onAccept?.(selectedStarsCount);
+            }
             setIsModalOpen(true);
-        } else {
-            onAccept?.(selectedStarsCount);
-        }
-        setIsModalOpen(true);
-    }, [hasFeedback, onAccept]);
+        },
+        [hasFeedback, onAccept],
+    );
 
     const acceptHandler = useCallback(() => {
         setIsModalOpen(false);
@@ -57,9 +60,7 @@ export const RatingCard = (props: RatingCardProps) => {
 
     const modalContent = (
         <>
-            <Text
-                title={feedbackTitle}
-            />
+            <Text title={feedbackTitle} />
             <Input
                 data-testid="RatingCard.Input"
                 value={feedback}
@@ -69,16 +70,35 @@ export const RatingCard = (props: RatingCardProps) => {
         </>
     );
     return (
-        <Card className={className} max data-testid="RatingCard">
-            <VStack align="center" gap="8" max>
+        <Card
+            className={className}
+            max
+            data-testid="RatingCard"
+        >
+            <VStack
+                align="center"
+                gap="8"
+                max
+            >
                 <Text title={starsCount ? t('Спасибо за оценку') : title} />
-                <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStarts} />
+                <StarRating
+                    selectedStars={starsCount}
+                    size={40}
+                    onSelect={onSelectStarts}
+                />
             </VStack>
             <BrowserView>
                 <Modal isOpen={isModalOpen}>
-                    <VStack max gap="32">
+                    <VStack
+                        max
+                        gap="32"
+                    >
                         {modalContent}
-                        <HStack max gap="16" justify="end">
+                        <HStack
+                            max
+                            gap="16"
+                            justify="end"
+                        >
                             <Button
                                 data-testid="RatingCard.Close"
                                 onClick={cancelHandler}
@@ -98,10 +118,21 @@ export const RatingCard = (props: RatingCardProps) => {
             </BrowserView>
 
             <MobileView>
-                <Drawer isOpen={isModalOpen} lazy onClose={cancelHandler}>
-                    <VStack max gap="32">
+                <Drawer
+                    isOpen={isModalOpen}
+                    lazy
+                    onClose={cancelHandler}
+                >
+                    <VStack
+                        max
+                        gap="32"
+                    >
                         {modalContent}
-                        <Button fullWidth onClick={acceptHandler} size={ButtonSize.L}>
+                        <Button
+                            fullWidth
+                            onClick={acceptHandler}
+                            size={ButtonSize.L}
+                        >
                             {t('Отправить')}
                         </Button>
                     </VStack>

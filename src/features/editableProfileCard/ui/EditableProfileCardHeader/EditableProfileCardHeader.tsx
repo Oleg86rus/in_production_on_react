@@ -13,10 +13,12 @@ import { updateProfileData } from '../../model/services/updateProfileData/update
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface EditableProfileCardHeaderProps {
-    className?: string
+    className?: string;
 }
 
-export const EditableProfileCardHeader = ({ className }: EditableProfileCardHeaderProps) => {
+export const EditableProfileCardHeader = ({
+    className,
+}: EditableProfileCardHeaderProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const authData = useSelector(getUserAuthData);
@@ -39,41 +41,42 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
     const title = t('Профиль');
 
     return (
-        <HStack max justify="between" className={classNames('', {}, [className])}>
+        <HStack
+            max
+            justify="between"
+            className={classNames('', {}, [className])}
+        >
             <Text title={title} />
             {canEdit && (
                 <div>
-                    {readonly
-                        ? (
+                    {readonly ? (
+                        <Button
+                            theme={ThemeButton.OUTLINE}
+                            onClick={onEdit}
+                            data-testid="EditableProfileCardHeader.EditButton"
+                        >
+                            {t('Редактировать')}
+                        </Button>
+                    ) : (
+                        <HStack gap="8">
+                            <Button
+                                theme={ThemeButton.OUTLINE_RED}
+                                onClick={onCancelEdit}
+                                data-testid="EditableProfileCardHeader.CancelButton"
+                            >
+                                {t('Отменить')}
+                            </Button>
                             <Button
                                 theme={ThemeButton.OUTLINE}
-                                onClick={onEdit}
-                                data-testid="EditableProfileCardHeader.EditButton"
+                                onClick={onSave}
+                                data-testid="EditableProfileCardHeader.SaveButton"
                             >
-                                {t('Редактировать')}
+                                {t('Сохранить')}
                             </Button>
-                        )
-                        : (
-                            <HStack gap="8">
-                                <Button
-                                    theme={ThemeButton.OUTLINE_RED}
-                                    onClick={onCancelEdit}
-                                    data-testid="EditableProfileCardHeader.CancelButton"
-                                >
-                                    {t('Отменить')}
-                                </Button>
-                                <Button
-                                    theme={ThemeButton.OUTLINE}
-                                    onClick={onSave}
-                                    data-testid="EditableProfileCardHeader.SaveButton"
-                                >
-                                    {t('Сохранить')}
-                                </Button>
-                            </HStack>
-                        )}
+                        </HStack>
+                    )}
                 </div>
             )}
-
         </HStack>
     );
 };

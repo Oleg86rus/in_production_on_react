@@ -24,28 +24,32 @@ const viewTypes = [
     },
 ];
 
-export const ArticleViewSelector = memo((props: ArticleTextBlockComponentProps) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { className, onViewClick, view } = props;
+export const ArticleViewSelector = memo(
+    (props: ArticleTextBlockComponentProps) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { className, onViewClick, view } = props;
 
-    const onClick = (newView: ArticleView) => () => {
-        onViewClick?.(newView);
-    };
+        const onClick = (newView: ArticleView) => () => {
+            onViewClick?.(newView);
+        };
 
-    return (
-        <div className={classNames('', {}, [className])}>
-            {viewTypes.map((viewType) => (
-                <Button
-                    key={viewType.view}
-                    theme={ThemeButton.CLEAR}
-                    onClick={onClick(viewType.view)}
-                >
-                    <Icon
-                        Svg={viewType.icon}
-                        className={classNames('', { [cls.notSelected]: viewType.view !== view })}
-                    />
-                </Button>
-            ))}
-        </div>
-    );
-});
+        return (
+            <div className={classNames('', {}, [className])}>
+                {viewTypes.map((viewType) => (
+                    <Button
+                        key={viewType.view}
+                        theme={ThemeButton.CLEAR}
+                        onClick={onClick(viewType.view)}
+                    >
+                        <Icon
+                            Svg={viewType.icon}
+                            className={classNames('', {
+                                [cls.notSelected]: viewType.view !== view,
+                            })}
+                        />
+                    </Button>
+                ))}
+            </div>
+        );
+    },
+);

@@ -16,12 +16,12 @@ interface ProfileCardProps {
     isLoading?: boolean | undefined;
     error?: string;
     readonly?: boolean;
-    onChangeFirstname?: (value? :string) => void;
-    onChangeLastname?: (value? :string) => void;
-    onChangeCity?: (value? :string) => void;
-    onChangeAge?: (value? :string) => void;
-    onChangeUsername?: (value? :string) => void;
-    onChangeAvatar?: (value? :string) => void;
+    onChangeFirstname?: (value?: string) => void;
+    onChangeLastname?: (value?: string) => void;
+    onChangeCity?: (value?: string) => void;
+    onChangeAge?: (value?: string) => void;
+    onChangeUsername?: (value?: string) => void;
+    onChangeAvatar?: (value?: string) => void;
     onChangeCurrency?: (currency: Currency) => void;
     onChangeCountry?: (country: Country) => void;
 }
@@ -45,7 +45,15 @@ export const ProfileCard = (props: ProfileCardProps) => {
     const { t } = useTranslation('profile');
     if (isLoading) {
         return (
-            <HStack justify="center" max className={classNames(cls.ProfileCard, { [cls.loading]: true }, [className])}>
+            <HStack
+                justify="center"
+                max
+                className={classNames(
+                    cls.ProfileCard,
+                    { [cls.loading]: true },
+                    [className],
+                )}
+            >
                 <Loader />
             </HStack>
         );
@@ -55,7 +63,14 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
     if (error) {
         return (
-            <HStack justify="center" max className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+            <HStack
+                justify="center"
+                max
+                className={classNames(cls.ProfileCard, {}, [
+                    className,
+                    cls.error,
+                ])}
+            >
                 <Text
                     theme={TextTheme.ERROR}
                     title={title}
@@ -80,11 +95,18 @@ export const ProfileCard = (props: ProfileCardProps) => {
     };
 
     return (
-        <VStack gap="16" max className={classNames(cls.ProfileCard, mods, [className])}>
+        <VStack
+            gap="16"
+            max
+            className={classNames(cls.ProfileCard, mods, [className])}
+        >
             {data?.avatar && (
                 <div className={cls.avatarWrapper}>
-                    {/* eslint-disable-next-line i18next/no-literal-string */}
-                    <Avatar src={data?.avatar} alt="avatar" />
+                    <Avatar
+                        src={data?.avatar}
+                        /* eslint-disable-next-line i18next/no-literal-string */
+                        alt="avatar"
+                    />
                 </div>
             )}
             <Input

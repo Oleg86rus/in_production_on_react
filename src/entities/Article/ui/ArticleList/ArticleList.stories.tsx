@@ -1,10 +1,12 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import '@/app/styles/index.scss';
-import { ArticleView, ArticleBlockType, ArticleType } from '../../model/consts/articleConsts';
 import {
-    Article,
-} from '../../model/types/article';
+    ArticleView,
+    ArticleBlockType,
+    ArticleType,
+} from '../../model/consts/articleConsts';
+import { Article } from '../../model/types/article';
 import { ArticleList } from './ArticleList';
 
 export default {
@@ -90,28 +92,26 @@ const article: Article = {
     ],
 };
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+const Template: ComponentStory<typeof ArticleList> = (args) => (
+    <ArticleList {...args} />
+);
 
 export const isLoadingBig = Template.bind({});
 isLoadingBig.args = {
     isLoading: true,
-    articles: new Array(16).fill(0).map((item, i) => (
-        {
-            ...article,
-            id: String(i),
-        }
-    )),
+    articles: new Array(16).fill(0).map((item, i) => ({
+        ...article,
+        id: String(i),
+    })),
     view: ArticleView.BIG,
 };
 
 export const isLoadingSmall = Template.bind({});
 isLoadingSmall.args = {
     isLoading: true,
-    articles: new Array(16).fill(0).map((item, i) => (
-        {
-            ...article,
-            id: String(i),
-        }
-    )),
+    articles: new Array(16).fill(0).map((item, i) => ({
+        ...article,
+        id: String(i),
+    })),
     view: ArticleView.SMALL,
 };

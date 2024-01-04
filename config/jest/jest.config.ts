@@ -13,23 +13,10 @@ export default {
     },
     clearMocks: true,
     testEnvironment: 'jsdom',
-    coveragePathIgnorePatterns: [
-        '/node_modules/',
-    ],
-    modulePaths: [
-        '<rootDir>src',
-    ],
-    moduleDirectories: [
-        'node_modules',
-    ],
-    moduleFileExtensions: [
-        'js',
-        'jsx',
-        'ts',
-        'tsx',
-        'json',
-        'node',
-    ],
+    coveragePathIgnorePatterns: ['/node_modules/'],
+    modulePaths: ['<rootDir>src'],
+    moduleDirectories: ['node_modules'],
+    moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
     rootDir: '../../',
     testMatch: [
         //      Есть разница между MAC OS и WIN
@@ -43,12 +30,15 @@ export default {
     },
     reporters: [
         'default',
-        ['jest-html-reporters', {
-            publicPath: '<rootDir>/reports/unit',
-            filename: 'report.html',
-            openReport: true,
-            inlineSource: true,
-        }],
+        [
+            'jest-html-reporters',
+            {
+                publicPath: '<rootDir>/reports/unit',
+                filename: 'report.html',
+                openReport: true,
+                inlineSource: true,
+            },
+        ],
     ],
     // All imported modules in your tests should be mocked automatically
     // automock: false,

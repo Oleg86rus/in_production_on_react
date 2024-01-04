@@ -16,10 +16,13 @@ interface ArticleListProps {
     target?: HTMLAttributeAnchorTarget;
 }
 
-const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
-    .fill(0)
-    .map((item, i) => (
-        <ArticleListItemSkeleton className={cls.card} view={view} key={i} />
+const getSkeletons = (view: ArticleView) =>
+    new Array(view === ArticleView.SMALL ? 9 : 3).fill(0).map((item, i) => (
+        <ArticleListItemSkeleton
+            className={cls.card}
+            view={view}
+            key={i}
+        />
     ));
 
 export const ArticleList = (props: ArticleListProps) => {
@@ -46,7 +49,10 @@ export const ArticleList = (props: ArticleListProps) => {
 
     if (!isLoading && !articles.length) {
         return (
-            <Text size={TextSize.L} title={errorTitle} />
+            <Text
+                size={TextSize.L}
+                title={errorTitle}
+            />
         );
     }
 
@@ -55,9 +61,7 @@ export const ArticleList = (props: ArticleListProps) => {
             className={classNames(cls.ArticleList, {}, [className, cls[view]])}
             data-testid="ArticleList"
         >
-            {articles.length > 0
-                ? articles.map(renderArticle)
-                : null}
+            {articles.length > 0 ? articles.map(renderArticle) : null}
             {isLoading && getSkeletons(view)}
         </div>
     );
