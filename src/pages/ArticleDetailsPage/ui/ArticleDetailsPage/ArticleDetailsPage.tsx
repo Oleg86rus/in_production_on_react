@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
+import { t } from 'i18next';
 import { classNames } from '@/shared/lib/tests/classNames/classNames';
 import { ArticleDetails } from '@/entities/Article';
 import {
@@ -14,8 +15,8 @@ import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDet
 import { articleDetailsPageReducer } from '../../model/slices';
 import cls from './ArticleDetailsPage.module.scss';
 import { ArticleRating } from '@/features/articleRating';
-import { getFeatureFlag } from '@/shared/lib/features';
-import { Counter } from '@/entities/Counter';
+import { getFeatureFlag, toggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/Card';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -29,11 +30,18 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
 
     const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
-    const isCounterEnabled = getFeatureFlag('isCounterEnabled');
+    // const isCounterEnabled = getFeatureFlag('isCounterEnabled');
 
     if (!id) {
         return null;
     }
+
+    const counter = toggleFeatures({
+        name: 'isCounterEnabled',
+        on: () => <ArticleRating articleId={id} />,
+        // @ts-ignore
+        off: () => <Card>{t('оценка статей скоро появится!')}</Card>,
+    });
 
     return (
         <DynamicModuleLoader
@@ -49,7 +57,8 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
                 >
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    {isCounterEnabled && <Counter />}
+                    {counter}
+                    {/* {isCounterEnabled ? <CounterRedesigned /> : <Counter />} */}
                     {isArticleRatingEnabled && <ArticleRating articleId={id} />}
                     <ArticleRecommendationList />
                     <ArticleDetailsComments id={id} />

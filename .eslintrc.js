@@ -30,6 +30,7 @@ module.exports = {
     ],
     rules: {
         'react/jsx-max-props-per-line': ['error', { maximum: 4 }],
+        'react/no-unstable-nested-components': 'warn',
         'unused-imports/no-unused-imports': 'error',
         'react/jsx-filename-extension': [
             2,
